@@ -7,17 +7,17 @@ import xmlmodels.Company;
 import xmlmodels.Staff;
 
 public class BatchXmlImporterDataBase {
-  static void connectionWithPostgresDataBase(Company company) throws SQLException {
+  static void connectWithPostgresDataBase(Company company) throws SQLException {
     try (Connection connection = DriverManager.getConnection(
       "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "postgres")) {
 
       final int companyId;
 
-      companyId = BatchXmlImporterInserts.insertCompanyValues(company, connection);
+      companyId = BatchXmlImporterInsert.insertCompanyValues(company, connection);
 
       for (Staff staff : company.staff) {
-        BatchXmlImporterInserts.insertStaffValues(connection, companyId, staff);
-        BatchXmlImporterInserts.insertSalaryValues(connection, staff);
+        BatchXmlImporterInsert.insertStaffValues(connection, companyId, staff);
+        BatchXmlImporterInsert.insertSalaryValues(connection, staff);
       }
     }
   }

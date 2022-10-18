@@ -5,7 +5,7 @@ import java.sql.Statement;
 import xmlmodels.Company;
 import xmlmodels.Staff;
 
-public class BatchXmlImporterInserts {
+public class BatchXmlImporterInsert {
   static int insertCompanyValues(Company company, Connection connection) throws SQLException {
     final int companyId;
     try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company(name) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
