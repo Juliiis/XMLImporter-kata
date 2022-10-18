@@ -15,7 +15,9 @@ public class GetAllXmlFilesFromFolderPathTest {
     @Test
     public void readOnlyXmlFilesFromFolderPath() throws IOException {
         final String fileExtension = ".xml";
+
         List<Path> paths = findAllFiles(path, fileExtension);
+
         assertThat(paths).hasSize(2);
     }
 

@@ -17,24 +17,23 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BatchXmlImporterTest {
-
     final Path path = Path.of(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources");
 
     @Test
     public void importXmlIntoDatabase() throws JAXBException, IOException, SQLException {
         BatchXmlImporter batchXmlImporter = new BatchXmlImporter();
         clearTables();
-
         batchXmlImporter.importFiles(path);
 
         var companies = getAllCompanies();
+
         assertThat(companies).hasSize(2);
     }
 
     private void clearTables() throws SQLException {
-        try (Connection conn = DriverManager.getConnection(
+        try (Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "postgres")) {
-            try (PreparedStatement preparedStatement = conn.prepareStatement(
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "DELETE FROM salary; DELETE FROM staff; DELETE FROM company")) {
                 preparedStatement.executeUpdate();
             }
@@ -44,11 +43,11 @@ class BatchXmlImporterTest {
 
     private List<Company> getAllCompanies() throws SQLException {
         ArrayList<Company> companies = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection(
+        try (Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "postgres")) {
-            getCompanies(companies, conn);
-            getStaff(companies, conn);
-            getSalary(companies, conn);
+            getCompanies(companies, connection);
+            getStaff(companies, connection);
+            getSalary(companies, connection);
         }
         return companies;
     }
@@ -67,9 +66,9 @@ class BatchXmlImporterTest {
         }
     }
 
-    private void getStaff(ArrayList<Company> companies, Connection conn) throws SQLException {
+    private void getStaff(ArrayList<Company> companies, Connection connection) throws SQLException {
         for (Company company : companies) {
-            var resultSet = conn.createStatement().executeQuery("SELECT * FROM staff WHERE company_id = " + company.id);
+            var resultSet = connection.createStatement().executeQuery("SELECT * FROM staff WHERE company_id = " + company.id);
             while (resultSet.next()) {
                 var staff = new Staff();
                 staff.id = resultSet.getInt("id");
@@ -81,8 +80,8 @@ class BatchXmlImporterTest {
         }
     }
 
-    private void getCompanies(ArrayList<Company> companies, Connection conn) throws SQLException {
-        var resultSet = conn.createStatement().executeQuery("SELECT * FROM company");
+    private void getCompanies(ArrayList<Company> companies, Connection connection) throws SQLException {
+        var resultSet = connection.createStatement().executeQuery("SELECT * FROM company");
         while (resultSet.next()) {
             var company = new Company();
             company.id = resultSet.getInt("id");
