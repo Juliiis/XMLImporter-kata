@@ -21,7 +21,7 @@ class BatchXmlImporterTest {
     final Path path = Path.of(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources");
 
     @Test
-    public void import_xml_into_database() throws JAXBException, IOException, SQLException {
+    public void importXmlIntoDatabase() throws JAXBException, IOException, SQLException {
         BatchXmlImporter batchXmlImporter = new BatchXmlImporter();
         clearTables();
 
@@ -53,10 +53,10 @@ class BatchXmlImporterTest {
         return companies;
     }
 
-    private void getSalary(ArrayList<Company> companies, Connection conn) throws SQLException {
+    private void getSalary(ArrayList<Company> companies, Connection connection) throws SQLException {
         for (Company company : companies) {
             for (Staff staff : company.staff) {
-                var resultSet = conn.createStatement().executeQuery("SELECT * FROM salary WHERE staff_id = " + staff.id);
+                var resultSet = connection.createStatement().executeQuery("SELECT * FROM salary WHERE staff_id = " + staff.id);
                 while (resultSet.next()) {
                     var salary = new Salary();
                     salary.currency = resultSet.getString("currency");
