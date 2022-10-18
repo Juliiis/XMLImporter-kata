@@ -32,6 +32,4 @@ public class BatchXmlImporterDataBase {
     return companyId;
   }
 
-
-
 }
