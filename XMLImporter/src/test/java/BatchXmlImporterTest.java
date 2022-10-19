@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import xmlmodels.Company;
 import xmlmodels.Salary;
 import xmlmodels.Staff;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
