@@ -1,3 +1,5 @@
+package infrastructure;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,7 +8,7 @@ import xmlmodels.Staff;
 
 public class CompanyDataBase {
   static CompanyController companyController = new CompanyController();
-  static void connectWithPostgresDataBase(Company company) throws SQLException {
+  public static void connectWithPostgresDataBase(Company company) throws SQLException {
     try (Connection connection = DriverManager.getConnection(
       "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "postgres")) {
 

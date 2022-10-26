@@ -1,3 +1,5 @@
+package infrastructure;
+
 import static java.nio.file.Files.walk;
 
 import jakarta.xml.bind.JAXBContext;
@@ -14,7 +16,7 @@ import java.util.stream.Stream;
 import xmlmodels.Company;
 
 public class ImporterFile {
-  static void addFileIntoACompany(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
+  public static void addFileIntoACompany(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
     for (Path path : paths) {
       File file = new File(path.toString());
       JAXBContext jaxbContext = JAXBContext.newInstance(Company.class);
@@ -24,7 +26,7 @@ public class ImporterFile {
     }
   }
 
-  static List<Path> getPathList(Path folderPath, String fileExtension) throws IOException {
+  public static List<Path> getPathList(Path folderPath, String fileExtension) throws IOException {
       List<Path> paths;
       try (Stream<Path> pathStream = walk(folderPath)
         .filter(Files::isRegularFile)

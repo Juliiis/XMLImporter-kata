@@ -1,3 +1,4 @@
+import domain.BatchXmlImporter;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.Test;
 import xmlmodels.Company;
