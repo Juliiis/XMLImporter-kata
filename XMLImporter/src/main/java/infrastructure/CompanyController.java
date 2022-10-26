@@ -17,7 +17,7 @@ public class CompanyController {
     }
     return companyId;
   }
-  static int insertCompanyValuesIntoDataBase(Company company, Connection connection) throws SQLException {
+  static int insertCompanyValueIntoDataBase(Company company, Connection connection) throws SQLException {
     final int companyId;
     try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company(name) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
       preparedStatement.setString(1, company.name);
