@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import xmlmodels.Company;
 import xmlmodels.Staff;
 
-public class ImporterDataBase {
+public class CompanyDataBase {
   static CompanyController companyController = new CompanyController();
   static void connectWithPostgresDataBase(Company company) throws SQLException {
     try (Connection connection = DriverManager.getConnection(

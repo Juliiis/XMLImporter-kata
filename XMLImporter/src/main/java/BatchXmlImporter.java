@@ -19,7 +19,7 @@ public class BatchXmlImporter {
         ImporterFile.addFileIntoACompany(paths, companies);
 
         for (Company company : companies) {
-            ImporterDataBase.connectWithPostgresDataBase(company);
+            CompanyDataBase.connectWithPostgresDataBase(company);
         }
     }
 }
