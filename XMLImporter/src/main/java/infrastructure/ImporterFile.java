@@ -1,7 +1,5 @@
 package infrastructure;
 
-import static java.nio.file.Files.walk;
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
@@ -15,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import xmlmodels.Company;
 
+import static java.nio.file.Files.walk;
 public class ImporterFile {
   public static void addFileIntoACompany(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
     for (Path path : paths) {
