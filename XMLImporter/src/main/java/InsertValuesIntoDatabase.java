@@ -3,7 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import xmlmodels.Staff;
 
-public class ImporterInsert {
+public class InsertValuesIntoDatabase {
   static void insertStaffValues(Connection connection, int companyId, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO staff(id,company_id, first_name, last_name, nick_name) VALUES (?,?,?,?,?)")) {

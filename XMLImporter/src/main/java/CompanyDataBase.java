@@ -15,8 +15,8 @@ public class CompanyDataBase {
       companyId = companyController.insertCompanyValuesIntoDataBase(company, connection);
 
       for (Staff staff : company.staff) {
-        ImporterInsert.insertStaffValues(connection, companyId, staff);
-        ImporterInsert.insertSalaryValues(connection, staff);
+        InsertValuesIntoDatabase.insertStaffValues(connection, companyId, staff);
+        InsertValuesIntoDatabase.insertSalaryValues(connection, staff);
       }
     }
   }
