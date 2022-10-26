@@ -13,7 +13,7 @@ public class BatchXmlImporterDataBase {
 
       final int companyId;
 
-      companyId = BatchXmlImporterInsert.insertCompanyValues(company, connection);
+      companyId = BatchXmlImporterInsert.insertCompanyValuesIntoDataBase(company, connection);
 
       for (Staff staff : company.staff) {
         BatchXmlImporterInsert.insertStaffValues(connection, companyId, staff);
