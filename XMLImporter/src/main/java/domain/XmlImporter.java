@@ -11,18 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XmlImporter {
-    FileActions importerFile = new FileActions();
+    FileActions fileActions = new FileActions();
     CompanyDataBase companyDataBase = new CompanyDataBase();
     public void importFiles(Path folderPath) throws IOException, JAXBException, SQLException {
 
         final String fileExtension = ".xml";
         List<Path> paths;
 
-        paths = importerFile.getPathList(folderPath, fileExtension);
+        paths = fileActions.getPathList(folderPath, fileExtension);
 
         ArrayList<Company> companies = new ArrayList<>();
 
-        importerFile.addFileIntoACompany(paths, companies);
+        fileActions.addFileIntoACompany(paths, companies);
 
         for (Company company : companies) {
             companyDataBase.connectWithPostgresDataBase(company);
