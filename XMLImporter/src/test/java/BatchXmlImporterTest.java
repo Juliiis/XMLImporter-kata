@@ -1,4 +1,4 @@
-import domain.BatchXmlImporter;
+import domain.XmlImporter;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.Test;
 import xmlmodels.Company;
@@ -21,7 +21,7 @@ class BatchXmlImporterTest {
 
     @Test
     public void importXmlIntoDatabase() throws JAXBException, IOException, SQLException {
-        BatchXmlImporter batchXmlImporter = new BatchXmlImporter();
+        XmlImporter batchXmlImporter = new XmlImporter();
         clearTables();
         batchXmlImporter.importFiles(path);
 

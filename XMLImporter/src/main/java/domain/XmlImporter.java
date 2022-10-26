@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BatchXmlImporter {
+public class XmlImporter {
     ImporterFile importerFile = new ImporterFile();
     CompanyDataBase companyDataBase = new CompanyDataBase();
     public void importFiles(Path folderPath) throws IOException, JAXBException, SQLException {
