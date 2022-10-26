@@ -1,7 +1,7 @@
 package domain;
 
 import infrastructure.CompanyDataBase;
-import infrastructure.ImporterFile;
+import infrastructure.FileActions;
 import jakarta.xml.bind.JAXBException;
 import java.sql.SQLException;
 import xmlmodels.Company;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XmlImporter {
-    ImporterFile importerFile = new ImporterFile();
+    FileActions importerFile = new FileActions();
     CompanyDataBase companyDataBase = new CompanyDataBase();
     public void importFiles(Path folderPath) throws IOException, JAXBException, SQLException {
 
