@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import xmlmodels.Company;
 
-public class BatchXmlImporterFile {
+public class ImporterFile {
   static void addFileIntoACompany(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
     for (Path path : paths) {
       File file = new File(path.toString());

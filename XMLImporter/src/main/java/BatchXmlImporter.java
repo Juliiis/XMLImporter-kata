@@ -12,11 +12,11 @@ public class BatchXmlImporter {
         final String fileExtension = ".xml";
         List<Path> paths;
 
-        paths = BatchXmlImporterFile.getPathList(folderPath, fileExtension);
+        paths = ImporterFile.getPathList(folderPath, fileExtension);
 
         ArrayList<Company> companies = new ArrayList<>();
 
-        BatchXmlImporterFile.addFileIntoACompany(paths, companies);
+        ImporterFile.addFileIntoACompany(paths, companies);
 
         for (Company company : companies) {
             BatchXmlImporterDataBase.connectWithPostgresDataBase(company);
