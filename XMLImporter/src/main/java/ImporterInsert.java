@@ -1,22 +1,9 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import xmlmodels.Company;
 import xmlmodels.Staff;
 
-public class BatchXmlImporterInsert {
-  static int insertCompanyValuesIntoDataBase(Company company, Connection connection) throws SQLException {
-    final int companyId;
-    try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company(name) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
-      preparedStatement.setString(1, company.name);
-      preparedStatement.executeUpdate();
-
-      companyId = BatchXmlImporterDataBase.checkIfCompanyIdExist(preparedStatement);
-    }
-    return companyId;
-  }
-
+public class ImporterInsert {
   static void insertStaffValues(Connection connection, int companyId, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO staff(id,company_id, first_name, last_name, nick_name) VALUES (?,?,?,?,?)")) {
@@ -28,7 +15,6 @@ public class BatchXmlImporterInsert {
       preparedStatement.executeUpdate();
     }
   }
-
   static void insertSalaryValues(Connection connection, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO salary(staff_id, currency, value) VALUES (?,?,?)")) {
