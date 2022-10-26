@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import xmlmodels.Company;
 import xmlmodels.Staff;
 
-public class BatchXmlImporterDataBase {
+public class ImporterDataBase {
   static CompanyController companyController = new CompanyController();
   static void connectWithPostgresDataBase(Company company) throws SQLException {
     try (Connection connection = DriverManager.getConnection(
