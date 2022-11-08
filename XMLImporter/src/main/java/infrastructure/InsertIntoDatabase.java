@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import xmlmodels.Staff;
 
 public class InsertIntoDatabase {
-  static void insertStaffValues(Connection connection, int companyId, Staff staff) throws SQLException {
+  static void insertStaff(Connection connection, int companyId, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO staff(id,company_id, first_name, last_name, nick_name) VALUES (?,?,?,?,?)")) {
       preparedStatement.setInt(1, staff.id);
@@ -17,7 +17,7 @@ public class InsertIntoDatabase {
       preparedStatement.executeUpdate();
     }
   }
-  static void insertSalaryValues(Connection connection, Staff staff) throws SQLException {
+  static void insertSalary(Connection connection, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO salary(staff_id, currency, value) VALUES (?,?,?)")) {
       preparedStatement.setInt(1, staff.id);
