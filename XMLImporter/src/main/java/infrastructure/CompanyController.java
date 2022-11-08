@@ -8,7 +8,7 @@ import java.sql.Statement;
 import xmlmodels.Company;
 
 public class CompanyController {
-  static int checkIfCompanyIdExist(PreparedStatement preparedStatement) throws SQLException {
+  static int findIfTheLastIdExist(PreparedStatement preparedStatement) throws SQLException {
     final int companyId;
     try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
       if (generatedKeys.next()) {
@@ -23,7 +23,7 @@ public class CompanyController {
       preparedStatement.setString(1, company.name);
       preparedStatement.executeUpdate();
 
-      companyId = checkIfCompanyIdExist(preparedStatement);
+      companyId = findIfTheLastIdExist(preparedStatement);
     }
     return companyId;
   }
