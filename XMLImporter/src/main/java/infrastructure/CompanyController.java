@@ -17,15 +17,5 @@ public class CompanyController {
     }
     return companyId;
   }
-  static int insertCompanyIntoDataBase(Company company, Connection connection) throws SQLException {
-    final int companyId;
-    try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company(name) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
-      preparedStatement.setString(1, company.name);
-      preparedStatement.executeUpdate();
-
-      companyId = findIfTheLastIdExist(preparedStatement);
-    }
-    return companyId;
-  }
 
 }

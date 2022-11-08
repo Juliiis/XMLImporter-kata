@@ -1,11 +1,25 @@
 package infrastructure;
 
+import static infrastructure.CompanyController.findIfTheLastIdExist;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
+import xmlmodels.Company;
 import xmlmodels.Staff;
 
 public class InsertIntoDatabase {
+  static int insertCompanyIntoDataBase(Company company, Connection connection) throws SQLException {
+    final int companyId;
+    try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO company(name) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
+      preparedStatement.setString(1, company.name);
+      preparedStatement.executeUpdate();
+
+      companyId = findIfTheLastIdExist(preparedStatement);
+    }
+    return companyId;
+  }
   static void insertStaff(Connection connection, int companyId, Staff staff) throws SQLException {
     try (PreparedStatement preparedStatement = connection.prepareStatement(
       "INSERT INTO staff(id,company_id, first_name, last_name, nick_name) VALUES (?,?,?,?,?)")) {
