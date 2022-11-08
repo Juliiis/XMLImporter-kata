@@ -22,7 +22,7 @@ public class XmlImporter {
 
         ArrayList<Company> companies = new ArrayList<>();
 
-        fileActions.addFileIntoACompany(paths, companies);
+        fileActions.insertCompanyInPostgresDataBase(paths, companies);
 
         for (Company company : companies) companyDataBase.connectWithPostgresDataBase(company);
     }

@@ -15,7 +15,7 @@ import xmlmodels.Company;
 
 import static java.nio.file.Files.walk;
 public class FileActions {
-  public static void addFileIntoACompany(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
+  public static void insertCompanyInPostgresDataBase(List<Path> paths, ArrayList<Company> companies) throws JAXBException {
     for (Path path : paths) {
       File file = new File(path.toString());
       JAXBContext jaxbContext = JAXBContext.newInstance(Company.class);
