@@ -14,7 +14,7 @@ public class CompanyDataBase {
 
       final int companyId;
 
-      companyId = companyController.insertCompanyValueIntoDataBase(company, connection);
+      companyId = companyController.insertCompanyIntoDataBase(company, connection);
 
       for (Staff staff : company.staff) {
         InsertValuesIntoDatabase.insertStaffValues(connection, companyId, staff);
