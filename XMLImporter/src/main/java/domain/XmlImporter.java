@@ -24,8 +24,6 @@ public class XmlImporter {
 
         fileActions.addFileIntoACompany(paths, companies);
 
-        for (Company company : companies) {
-            companyDataBase.connectWithPostgresDataBase(company);
-        }
+        for (Company company : companies) companyDataBase.connectWithPostgresDataBase(company);
     }
 }
